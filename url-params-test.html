@@ -1,0 +1,65 @@
+<head>
+    <script src="Chart.bundle.js"></script>
+</head>
+
+<body>
+    <!-- Back button -->
+    <a href="index.html" style="background-color: #e5e5e5; padding: 10px; color: #444; margin: 0; text-decoration: none;">Back to Form</a>
+    <!-- Chart Canvas -->
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <!-- Get URL Parameters -->
+    <script>
+        // Make queryString = everything from the '?' onward in the URL
+        const queryString = window.location.search;
+
+        // Then parse queryString and make urlParams = url parameters that exist
+        const urlParams = new URLSearchParams(queryString);
+
+        // Set variables for each parameter in queryString
+        const q1 = urlParams.get('q1');
+        const q2 = urlParams.get('q2');
+        const q3 = urlParams.get('q3');
+        const q4 = urlParams.get('q4');
+        const q5 = urlParams.get('q5');
+    </script>
+
+    <!-- Chart Script -->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Question 1', 'Question 2', 'Question 3', 'Question 4', 'Question 5'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [q1, q2, q3, q4, q5], //this is where we set the values
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
